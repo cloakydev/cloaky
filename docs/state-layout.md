@@ -51,6 +51,7 @@ Several stores also take an environment variable that points them elsewhere (`CL
 | --- | --- | --- | --- |
 | `ledger.json` | The token and cost ledger, per session | Yes | Loses usage and cost history |
 | `usage-cache.json` | Usage figures computed from transcripts, cached per file | Yes | Safe |
+| `venice-catalogue.json` | The last Venice model catalogue read in full, answered (marked stale) while Venice cannot be reached | Yes | Safe; the next successful read writes it again |
 | `file-stats.json` | Each session's per-file edit weights, measured when the edit landed | Yes | Loses the +/− figures; they cannot be measured again |
 | `checkpoints/` | Per-turn file snapshots behind Undo | Yes | Loses Undo on past turns |
 | `snapshots/<project digest>/` | A shadow Git repository per project (`shadow.git`) holding the trees that bound each turn, with copies of the project's files, and `index.json` naming the trees the kept checkpoints use. Excluded: the project's ignored paths, `.git`, `node_modules`, `.venv`, `venv`, `target`, `dist`, `build`, `.next`, `coverage`, `*.log`, `.env` files and files over 2 MiB. Deleting a thread drops its trees and the shadow once no thread names it; the checkpoints' byte budget counts it | Yes | Loses the whole-project Undo on past turns |

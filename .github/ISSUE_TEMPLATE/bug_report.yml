@@ -1,0 +1,123 @@
+name: Bug report
+description: Something in Cloaky does not work the way it should.
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. This tracker is public, so anyone can read what you write here.
+
+        - A security problem goes privately, through [Report a vulnerability](https://github.com/cloakydev/cloaky/security/advisories/new), as [SECURITY.md](https://github.com/cloakydev/cloaky/blob/main/SECURITY.md) describes.
+        - Questions go to [Discussions](https://github.com/cloakydev/cloaky/discussions).
+        - Leave out API keys, private code and private conversations.
+  - type: input
+    id: version
+    attributes:
+      label: Cloaky version
+      description: On macOS, Cloaky menu › About Cloaky. On Linux, the version in the file you downloaded (`Cloaky-0.1.2-…`), or `dpkg -s cloaky` / `rpm -q cloaky` for a package.
+      placeholder: 0.1.2
+    validations:
+      required: true
+  - type: dropdown
+    id: build
+    attributes:
+      label: Build
+      options:
+        - macOS, Apple Silicon
+        - macOS, Intel
+        - Linux, AppImage
+        - Linux, .deb
+        - Linux, .rpm
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system version
+      description: On Linux, the distribution and desktop environment too.
+      placeholder: macOS 15.6, or Ubuntu 24.04 with GNOME
+    validations:
+      required: true
+  - type: dropdown
+    id: display
+    attributes:
+      label: Linux display server
+      options:
+        - Not on Linux
+        - Wayland
+        - X11
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where it happened
+      options:
+        - Setup (the first-run steps)
+        - A session or its transcript
+        - An approval card or permission mode
+        - The review pane
+        - Undo or Redo
+        - Board or Imagine
+        - Cloakster
+        - Settings
+        - Updates
+        - Somewhere else
+    validations:
+      required: true
+  - type: dropdown
+    id: engine
+    attributes:
+      label: Engine
+      description: The engine the session was running, if the problem happened in a session.
+      options:
+        - Not in a session
+        - Claude Code
+        - OpenCode
+        - Codex
+        - Kimi Code
+        - Grok Build
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Venice model
+      description: The model the session used, as the model picker names it. Leave empty if it does not apply.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a project
+        2. Ask the agent to …
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Include any error text exactly as Cloaky showed it. A screenshot helps for anything visual; drag it into this box.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log
+      description: |
+        Settings (⌘, on macOS, Ctrl+, on Linux) › General › Help and legal › Logs › Show selects Cloaky's newest log in your file manager. Cloaky keeps one file a day for each part in `~/.cloaky/logs/`: `server-YYYY-MM-DD.log` and `desktop-YYYY-MM-DD.log`. Logs can hold paths and command output, so read the file before you share it. Drag the file here, or paste the lines around the problem.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Before you submit
+      options:
+        - label: I left out API keys, private code and private conversations, and I read the log before attaching it.
+          required: true

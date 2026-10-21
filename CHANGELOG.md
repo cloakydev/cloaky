@@ -4,13 +4,39 @@ Notable changes to Cloaky, newest first. The format follows [Keep a Changelog](h
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-20
+
+Cloaky now runs on Linux.
+
+### New
+
+- Linux builds for x64: AppImage, `.deb` and `.rpm`.
+- Model prices and context size in the model picker.
+- Tokens and cost on each turn.
+- Your Venice balance in the sidebar.
+
+### Changed
+
+- Claude Code is no longer required. Any installed engine works.
+- New installs limit each session to $5 of spend. Change it in Settings › General.
+- A refreshed look.
+
+### Fixed
+
+- Send waits for uploads and voice input to finish.
+- Smaller layout and keyboard fixes.
+
+### Known issues
+
+- The Intel and Linux builds have had less testing than Apple Silicon.
+
 ## [0.1.1] - 2026-10-13
 
 The first public release, a beta: it is ready for daily work, and some edges are still rough. Report a problem or ask a question in [Discussions](https://github.com/cloakydev/cloaky/discussions); report a security issue privately, as [SECURITY.md](https://github.com/cloakydev/cloaky/blob/main/SECURITY.md) describes.
 
 ### Added
 
-- A desktop app for macOS 13 or later and Linux that runs Claude Code, OpenCode, Codex, Kimi Code and Grok Build on Venice models with your own Venice API key.
+- A desktop app for macOS 13 or later, for Apple Silicon and Intel Macs, that runs Claude Code, OpenCode, Codex, Kimi Code and Grok Build on Venice models with your own Venice API key.
 - An onboarding step that shows which engines are installed on this machine and, for the rest, each vendor's own install command. Cloaky runs the engines you install and keeps none of its own; each engine updates itself. To drive your `claude`, Cloaky fetches the newest Claude Agent SDK from registry.npmjs.org, checked against its published SHA-512, at start and once a day.
 - Approval cards for edits and commands, and permission modes that set what runs without asking.
 - A review pane for the working tree: diffs per file, comments on a line, and rejecting a hunk.
@@ -64,7 +90,9 @@ The first public release, a beta: it is ready for daily work, and some edges are
 
 ### Known issues
 
-- Intel Mac and Linux builds have had less testing than the Apple Silicon build.
+- The Intel build has had less testing than the Apple Silicon build.
+- This release is for macOS only. Linux packages come in 0.1.2; there is no Windows build.
 
-[Unreleased]: https://github.com/cloakydev/cloaky/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/cloakydev/cloaky/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/cloakydev/cloaky/releases/tag/v0.1.2
 [0.1.1]: https://github.com/cloakydev/cloaky/releases/tag/v0.1.1

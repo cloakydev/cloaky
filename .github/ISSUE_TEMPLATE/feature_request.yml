@@ -1,0 +1,46 @@
+name: Feature request
+description: Ask for something Cloaky does not do yet, or a change to something it does.
+labels: [enhancement, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search the [open and closed issues](https://github.com/cloakydev/cloaky/issues?q=is%3Aissue) first; a thumbs-up on an existing request counts. For an open-ended idea you want to talk through, start a thread in [Discussions](https://github.com/cloakydev/cloaky/discussions) instead.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What you are trying to do
+      description: The task, and where Cloaky gets in the way today.
+      placeholder: When I review a long session, I want to …
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like Cloaky to do
+      description: What you would see and do in the app. A sketch or screenshot helps.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Part of the app
+      options:
+        - Setup
+        - Sessions and the transcript
+        - Approvals and permission modes
+        - The review pane
+        - Undo or Redo
+        - Board or Imagine
+        - Cloakster
+        - Engines
+        - Venice models and privacy
+        - Settings
+        - Something new
+    validations:
+      required: true
+  - type: textarea
+    id: today
+    attributes:
+      label: How you work around it today
+      description: Optional. What you do instead, and what it costs you.

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and help with setup
+    url: https://github.com/cloakydev/cloaky/discussions
+    about: Ask how something works, or get help with setup, in Discussions.
+  - name: Security vulnerability
+    url: https://github.com/cloakydev/cloaky/security/advisories/new
+    about: Report it privately, as SECURITY.md describes. Do not open a public issue.

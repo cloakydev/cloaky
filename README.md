@@ -6,12 +6,23 @@ A desktop workbench that runs Claude Code, OpenCode, Codex, Kimi Code and Grok B
 
 ## Download
 
-[Download the latest release](https://github.com/cloakydev/cloaky/releases/latest): `Cloaky-<version>-arm64.dmg` for Apple Silicon, `Cloaky-<version>-x64.dmg` for Intel. macOS 13 (Ventura) or later. There is no Linux or Windows build yet.
+[Download the latest release](https://github.com/cloakydev/cloaky/releases/latest).
 
-Builds are signed with a Developer ID certificate and notarized by Apple. To check a download before opening it:
+- **macOS 13 (Ventura) or later:** `Cloaky-<version>-arm64.dmg` for Apple Silicon, `Cloaky-<version>-x64.dmg` for Intel.
+- **Linux x64:** `Cloaky-<version>-x86_64.AppImage`, `Cloaky-<version>-amd64.deb` or `Cloaky-<version>-x86_64.rpm`. The AppImage needs FUSE 2: the `libfuse2` package (`libfuse2t64` on Ubuntu 24.04 and later). Without it, start the AppImage with `--appimage-extract-and-run`.
 
-    shasum -a 256 -c SHA256SUMS --ignore-missing      # SHA256SUMS is attached to every release
+There is no Windows build yet. The Apple Silicon build has had the most testing; reports from Intel Macs and from Linux, on Wayland or X11, are especially useful.
+
+To check a download before opening it, with the `SHA256SUMS` file attached to every release:
+
+    shasum -a 256 -c SHA256SUMS --ignore-missing      # macOS
+    sha256sum -c SHA256SUMS --ignore-missing          # Linux
+
+macOS builds are signed with a Developer ID certificate and notarized by Apple:
+
     spctl -a -vv /Applications/Cloaky.app             # expect: source=Notarized Developer ID
+
+On Linux the app installs an update only when the release's signing key vouches for it.
 
 ## Before your first session
 
@@ -20,7 +31,7 @@ Builds are signed with a Developer ID certificate and notarized by Apple. To che
 
 ## Updates
 
-The first and last steps of setup offer **Check for updates automatically**, ticked the first time and showing your saved choice after that; skipping or finishing setup saves what the box says. Change it, or check by hand, in Settings › General › This Mac. Your settings and sessions live in `~/.cloaky` and stay across updates.
+The first and last steps of setup offer **Check for updates automatically**, ticked the first time and showing your saved choice after that; skipping or finishing setup saves what the box says. Change it, or check by hand, in Settings › General › This Mac (This computer on Linux). On Linux, an update to a `.deb` or `.rpm` install asks for your password through the system prompt, since it installs as a system package. Your settings and sessions live in `~/.cloaky` and stay across updates.
 
 ## Privacy and safety
 
