@@ -4,6 +4,84 @@ Notable changes to Cloaky, newest first. The format follows [Keep a Changelog](h
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-10-29
+
+Talk with the agent and hear it answer. Claude Code is now optional, and no engine holds your Venice key.
+
+### New
+
+- Voice
+  - Turn on **Conversation** in the composer to hear each reply as it streams. A finished take sends itself.
+  - Say "remember that …" in a conversation to save a memory instead of sending.
+  - Talk-back says a short line when a run finishes or needs you. It uses Venice's Private voice, at about $0.0001 a line.
+  - Talk-back stops for the day at 150,000 characters, about $0.53. Change the limit in **Settings → Voice**.
+  - **Read this** reads a reply aloud.
+  - Approve, answer a question or stop a turn by voice. An approval waits for a second "yes".
+  - Hold the dictate chord to talk, or tap it to start and stop.
+  - Dictation starts faster: whisper stays loaded between takes.
+  - The voice bar tells you when the microphone is slow to open, hears nothing, or nears the 12-minute limit.
+  - Voice typing works on Linux.
+- Every engine comes with the eight Know Your Code skills, which Conversation is built on.
+- Start a goal from a project.
+- Turn Claude Code off in **Settings → Engines**. Threads, checks and scheduled tasks then run without it, and Cloaky fetches nothing for it.
+- Save memories and stop a single background command in OpenCode, Codex, Kimi Code and Grok Build chats.
+- The agent asks before editing when a request leaves the result open.
+
+### Changed
+
+- OpenCode, Codex, Kimi Code and Grok Build reach Venice through Cloaky, so none of them holds your key.
+- Their spend is what Venice charged. Codex's is estimated from Venice's prices.
+- They stop at the turn limit and at your session spend limit, and Stop always wins.
+- They edit files with their file tools, so every change shows in Review and can be undone.
+- In an encrypted chat, **Read this**, **Refine** and side chats are off, so nothing goes to a second Venice call.
+- **Refine** works with any default model and keeps code blocks whole. It answers in the language you wrote in.
+- Every palette meets its contrast floor. In dark mode, Send and the main buttons are a deeper blue with white text.
+- Every control shows a hover and a press, and streamed words fade in.
+- A reopened thread keeps its mode, effort and cost.
+- A scheduled task starts at its next scheduled time and never waits on a question nobody is there to answer.
+- Errors from git, Venice and teammates now say what happened in plain words.
+- Cloaky checks for updates as soon as you turn automatic checks on.
+
+### Fixed
+
+- Undo
+  - Starting a turn no longer freezes Cloaky while Undo saves the project.
+  - Undo works on large projects, survives the app quitting mid-save, and keeps its history when its index is damaged.
+  - Undo says why it was held when the project folder moved.
+- Privacy
+  - Claude Code no longer contacts api.anthropic.com unless you have added a plugin marketplace.
+  - Incognito chats on the other engines write nothing to disk.
+  - The privacy page lists what dictation and talk-back send and keep.
+- Review and git
+  - Commit includes only what Review showed.
+  - Cloaky refuses to commit during a merge or rebase, and pushes to the repository's own remote.
+- Venice
+  - Tokens, reasoning and each turn's cost are counted correctly.
+  - Tool calls stay whole when a reply is cut off.
+  - Changing the model no longer resets an engine session's spend count.
+- Voice
+  - Dictation no longer stops mid-take or hangs for 20 seconds when whisper fails to start.
+  - A take keeps its words after its composer closes.
+  - Conversation no longer reads inline code aloud.
+- Threads
+  - A tool call you deny shows as denied, not failed.
+  - A question's row shows the question instead of its raw input.
+  - The note above a reply names the model the way the picker does.
+  - A stopped message says in plain words how its run ended.
+- Squad
+  - Each teammate gets its own workspace, and a message reaches the teammate it mentions.
+  - A room keeps working when its lead is deleted.
+- A damaged settings, Undo or history file is set aside and named on the start page.
+- Archiving, renaming or deleting a thread applies in every open window.
+- Long names and unbroken strings wrap or truncate instead of breaking the layout.
+- An engine no longer triggers a macOS folder-access prompt for the folder Cloaky was launched from.
+- Dependencies are updated past their security advisories.
+
+### Known issues
+
+- The Intel and Linux builds have had less testing than Apple silicon.
+- Voice has not been tried on a Linux desktop yet.
+
 ## [0.1.2] - 2026-10-20
 
 Cloaky now runs on Linux.
@@ -93,6 +171,7 @@ The first public release, a beta: it is ready for daily work, and some edges are
 - The Intel build has had less testing than the Apple Silicon build.
 - This release is for macOS only. Linux packages come in 0.1.2; there is no Windows build.
 
-[Unreleased]: https://github.com/cloakydev/cloaky/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/cloakydev/cloaky/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/cloakydev/cloaky/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/cloakydev/cloaky/releases/tag/v0.1.2
 [0.1.1]: https://github.com/cloakydev/cloaky/releases/tag/v0.1.1

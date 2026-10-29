@@ -2,16 +2,16 @@
 
 A desktop workbench that runs Claude Code, OpenCode, Codex, Kimi Code and Grok Build on [Venice](https://venice.ai) models with your own Venice API key.
 
-**Cloaky is in public beta.** It is ready for daily work, and some edges are still rough. Report a problem in [Issues](https://github.com/cloakydev/cloaky/issues), or from the app: Settings › General › Help and legal › Report a problem, where Logs shows the newest log to attach. Ask questions in [Discussions](https://github.com/cloakydev/cloaky/discussions).
+**Cloaky is in beta.** You can use it for daily work, and you will find bugs. Report a problem in [Issues](https://github.com/cloakydev/cloaky/issues), or from the app: Settings › General › Help and legal › Report a problem, where Logs shows the newest log to attach. Ask questions in [Discussions](https://github.com/cloakydev/cloaky/discussions).
 
 ## Download
 
 [Download the latest release](https://github.com/cloakydev/cloaky/releases/latest).
 
-- **macOS 13 (Ventura) or later:** `Cloaky-<version>-arm64.dmg` for Apple Silicon, `Cloaky-<version>-x64.dmg` for Intel.
+- **macOS 13 (Ventura) or later:** `Cloaky-<version>-arm64.dmg` for Apple silicon, `Cloaky-<version>-x64.dmg` for Intel.
 - **Linux x64:** `Cloaky-<version>-x86_64.AppImage`, `Cloaky-<version>-amd64.deb` or `Cloaky-<version>-x86_64.rpm`. The AppImage needs FUSE 2: the `libfuse2` package (`libfuse2t64` on Ubuntu 24.04 and later). Without it, start the AppImage with `--appimage-extract-and-run`.
 
-There is no Windows build yet. The Apple Silicon build has had the most testing; reports from Intel Macs and from Linux, on Wayland or X11, are especially useful.
+There is no Windows build yet. The Apple silicon build has had the most testing; reports from Intel Macs and from Linux, on Wayland or X11, are especially useful.
 
 To check a download before opening it, with the `SHA256SUMS` file attached to every release:
 
@@ -31,11 +31,11 @@ On Linux the app installs an update only when the release's signing key vouches 
 
 ## Updates
 
-The first and last steps of setup offer **Check for updates automatically**, ticked the first time and showing your saved choice after that; skipping or finishing setup saves what the box says. Change it, or check by hand, in Settings › General › This Mac (This computer on Linux). On Linux, an update to a `.deb` or `.rpm` install asks for your password through the system prompt, since it installs as a system package. Your settings and sessions live in `~/.cloaky` and stay across updates.
+The first and last steps of setup offer **Check for updates automatically**. It is ticked the first time and shows your saved choice after that. Skipping or finishing setup saves what the box says. Change it, or check by hand, in Settings › General › This Mac (This computer on Linux). On Linux, an update to a `.deb` or `.rpm` install asks for your password through the system prompt, since it installs as a system package. Your settings and sessions live in `~/.cloaky` and stay across updates.
 
 ## Privacy and safety
 
-Cloaky sends no telemetry, analytics or crash reports, and runs no server of its own. [docs/PRIVACY.md](docs/PRIVACY.md) lists every host the app contacts and what it sends. Approvals are a review step, not a sandbox: read [SECURITY.md](SECURITY.md), which also says how to report a vulnerability privately.
+Cloaky sends no telemetry, analytics or crash reports. It runs no server of its own. [docs/PRIVACY.md](docs/PRIVACY.md) lists every host the app contacts and what it sends. Approvals are a review step, not a sandbox: read [SECURITY.md](SECURITY.md), which also says how to report a vulnerability privately.
 
 ## License
 

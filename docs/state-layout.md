@@ -25,6 +25,8 @@ Several stores also take an environment variable that points them elsewhere (`CL
 | Entry | Holds | Start fresh | Delete by hand |
 | --- | --- | --- | --- |
 | `engine-threads/claude/` | The Claude engine's config home (`CLAUDE_CONFIG_DIR`): transcripts under `projects/`, side chats beside them, and the user-scope settings, CLAUDE.md, agents, skills, commands, output styles and MCP servers set in Settings | Partly: the transcripts of sessions Cloaky started, and every worktree project folder | Loses every Claude thread and the engine settings made in Cloaky |
+| `engine-threads/claude/.cloaky-kycode.json` | What Cloaky did with each of Know Your Code's eight skills in the config home's `skills/`: the hash of a skill it wrote, or that the skill was edited, deleted, or there before the first install, so a skill is written again only while it is unedited | No | Each skill is checked again at the next start: one byte-equal to this version's is recorded as Cloaky's, any other is left alone as the person's, and one that is gone is not written back |
+| `engine-skills/kycode/` | A read-only copy (files at mode 0444) of Know Your Code's eight skills. The index OpenCode, Kimi Code and Grok Build are given names each skill's SKILL.md here. Written at each start, and replaced whole when it differs from this version's | No: sessions started before the next start still read it | Safe; the next start writes it again, and until then ACP sessions are sent no index |
 | `engine-threads/opencode/` | OpenCode's session database (`opencode.db`) and data directory (`data/`) | Yes | Loses every OpenCode thread |
 | `engine-threads/<engine>/` (codex, kimi, grok) | One engine home per run whose thread can be reopened, and a `<session id>.home` pointer to it | Yes | Loses those engines' threads |
 | `engine-config/<run>/` | OpenCode's per-run provider config; removed when the run closes | No | Safe |
@@ -35,6 +37,7 @@ Several stores also take an environment variable that points them elsewhere (`CL
 | `Chats/` | Plain chats' working folders, only when `CLOAKY_STATE_ROOT` is set; otherwise they are in `~/Cloaky/Chats` | No | The folders hold no conversation data |
 | `thread-settings.json` | Each thread's model, permission mode and effort, where it overrides the default | No | Threads fall back to the defaults |
 | `goals.json` | Each thread's goal and its timer | Yes | Loses the goals |
+| `goal-plans.json` | Each goal plan in a project: its ask, budget, state and threads | Yes | Loses the goal plans; their threads stay |
 | `snoozes.json` | Snoozed threads | No | Snoozed threads come back |
 | `runs.json` | The run journal: every live run, so a crash can offer to resume it | Yes | Loses the resume offer after a crash |
 | `interrupted.json` | An older crash marker; deleted at server start | Yes | Safe |
@@ -43,6 +46,7 @@ Several stores also take an environment variable that points them elsewhere (`CL
 | `attachments/` | Files attached to messages, one directory per upload | No | Loses attachments that threads still mention |
 | `media/` | Generated images and videos, by session | Yes | Loses the media in threads |
 | `media-pending.json` | Videos Venice is still rendering, so a restart can collect them | Yes | Those videos are not collected |
+| `voice-speech/` | Talk-back: `usage.json`, the local day and the characters sent to Venice that day, read against the daily cap, and `cache/`, one mp3 per fixed attention line and voice Venice has spoken, named by a hash of the model, voice and line (at most 300, oldest dropped first; a `.part` file is a write cut short). The folders at mode 0700, the files at 0600. A reply read aloud is never kept | Yes | Today's count starts again at zero; kept lines are spoken (and paid for) again |
 | `memory/` | Memory records, one JSON file each | No | Loses every memory |
 
 ## Records
@@ -83,6 +87,7 @@ Several stores also take an environment variable that points them elsewhere (`CL
 | `hands-host-ports.json` | Teammate computers that may still hold a task's host port open, so the next boot closes it (one Docker cannot yet answer for is kept and tried again) | No | A port left open by a crash stays open until that computer is next handed out |
 | `sandbox/env/` | One environment file per sandboxed run | No | Safe |
 | `sandbox/build-<version>/`, `sandbox/desktop-build-<version>/` | Staging for the sandbox and teammate images | No | Safe |
-| `models/` | Voice transcription models | No | Safe; download again in Settings › Voice |
+| `models/` | whisper.cpp speech models downloaded in Settings › Voice, each kept only once it matches its published SHA-256; `<model>.part` while one downloads, removed when the download fails or is cancelled | No | Safe; download again in Settings › Voice |
+| `whisper-server.json` | The pid of the resident whisper-server while it runs and the path of the empty folder it serves (`cloaky-whisper-public-*` in the system temp folder), at mode 0600, so the next start ends one a crash left behind, only while that pid is still whisper-server serving that folder, and removes the folder. Removed when it stops and at that start | No | Safe; a whisper-server left behind is then not ended until reboot, and its empty folder stays until the system clears its temp folder |
 
 [Data and privacy](PRIVACY.md) lists what Cloaky writes outside the state root.
